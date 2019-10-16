@@ -2,8 +2,9 @@
 
 namespace AlexandrMazur;
 
+use AlexandrMazur\Exceptions\CurlException;
+use AlexandrMazur\Exceptions\TelegramBotApiException;
 use AlexandrMazur\Utils\Curl;
-use RuntimeException;
 
 class TelegramPusher
 {
@@ -25,29 +26,60 @@ class TelegramPusher
     }
 
     /**
+     * Call given telegram action with given parameters.
      * @param string $action
-     * @param array $requestParameters
+     * @param array $actionParameters
      * @return array
      * @throws Exceptions\CurlException
+     * @throws TelegramBotApiException
      */
-    public function request($action, array $requestParameters)
+    public function call($action, array $actionParameters)
     {
-        $ch = curl_init();
+        $curlHandle = $this->initCurlHandle($action, $actionParameters);
+
+        if ($curlHandle === false) {
+            throw new CurlException('Unable to initiate curl handle');
+        }
+
+        return $this->request($curlHandle);
+    }
+
+    /**
+     * Create and initiate curl handle resource.
+     * @param string $action
+     * @param array $requestParameters
+     * @return false|resource
+     */
+    private function initCurlHandle($action, array $requestParameters)
+    {
+        $curlHandle = curl_init();
         $url = self::BOT_API . $this->apiKey . '/' . $action;
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($requestParameters));
-        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        curl_setopt($curlHandle, CURLOPT_URL, $url);
+        curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curlHandle, CURLOPT_SSL_VERIFYPEER, true);
+        curl_setopt($curlHandle, CURLOPT_POSTFIELDS, http_build_query($requestParameters));
+        curl_setopt($curlHandle, CURLOPT_HTTPHEADER, [
             'Content-Type: application/x-www-form-urlencoded',
         ]);
 
-        $curlResponse = Curl::execute($ch);
+        return $curlHandle;
+    }
+
+    /**
+     * Make request to Telegram Bot API.
+     * @param resource $curlHandle
+     * @return array with response from Telegram Bot API.
+     * @throws Exceptions\CurlException
+     * @throws TelegramBotApiException
+     */
+    private function request($curlHandle)
+    {
+        $curlResponse = Curl::execute($curlHandle);
 
         $curlResponse = json_decode($curlResponse, true);
 
         if ($curlResponse === null || $curlResponse['ok'] === false) {
-            throw new RuntimeException('Telegram API error. Description: ' . $curlResponse['description']);
+            throw new TelegramBotApiException('Telegram API error. Description: ' . $curlResponse['description']);
         }
 
         return $curlResponse;
