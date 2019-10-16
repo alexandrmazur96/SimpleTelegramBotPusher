@@ -50,7 +50,7 @@ class TelegramPusher
      * @param array $requestParameters
      * @return false|resource
      */
-    private function initCurlHandle($action, array $requestParameters)
+    protected function initCurlHandle($action, array $requestParameters)
     {
         $curlHandle = curl_init();
         $url = self::BOT_API . $this->apiKey . '/' . $action;
@@ -72,7 +72,7 @@ class TelegramPusher
      * @throws Exceptions\CurlException
      * @throws TelegramBotApiException
      */
-    private function request($curlHandle)
+    protected function request($curlHandle)
     {
         $curlResponse = Curl::execute($curlHandle);
 
