@@ -5,7 +5,7 @@ Telme is lightweight simple pusher to telegram bot.
 
 ## Installation
 
-To be continued...
+`$ composer require telme/telme`
 
 ## Usage
 
