@@ -1,8 +1,8 @@
 <?php
 
-namespace AlexandrMazur\Utils;
+namespace Telme\Utils;
 
-use AlexandrMazur\Exceptions\CurlException;
+use Telme\Exceptions\CurlException;
 
 final class Curl
 {

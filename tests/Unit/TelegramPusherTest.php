@@ -1,9 +1,9 @@
 <?php
 
-namespace AlexandrMazur\Tests\Unit;
+namespace Telme\Tests\Unit;
 
-use AlexandrMazur\TelegramPusher;
-use AlexandrMazur\Tests\TestCase;
+use Telme\TelegramPusher;
+use Telme\Tests\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 
 class TelegramPusherTest extends TestCase

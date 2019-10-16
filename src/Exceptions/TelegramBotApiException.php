@@ -1,6 +1,6 @@
 <?php
 
-namespace AlexandrMazur\Exceptions;
+namespace Telme\Exceptions;
 
 use Exception;
 

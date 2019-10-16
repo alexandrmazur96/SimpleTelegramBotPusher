@@ -1,10 +1,10 @@
 <?php
 
-namespace AlexandrMazur;
+namespace Telme;
 
-use AlexandrMazur\Exceptions\CurlException;
-use AlexandrMazur\Exceptions\TelegramBotApiException;
-use AlexandrMazur\Utils\Curl;
+use Telme\Exceptions\CurlException;
+use Telme\Exceptions\TelegramBotApiException;
+use Telme\Utils\Curl;
 
 class TelegramPusher
 {

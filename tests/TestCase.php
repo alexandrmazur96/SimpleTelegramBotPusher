@@ -1,6 +1,6 @@
 <?php
 
-namespace AlexandrMazur\Tests;
+namespace Telme\Tests;
 
 use PHPUnit\Framework\TestCase as BaseTestCase;
 

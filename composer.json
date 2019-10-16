@@ -1,12 +1,15 @@
 {
-  "name": "alexandrmazur/simple-telegram-bot-pusher",
+  "name": "telme/telme",
   "description": "Lightweight simple pusher to telegram bot API.",
+  "keywords": ["telegram", "telegram bot", "telegram pusher"],
+  "homepage": "https://github.com/alexandrmazur96/SimpleTelegramBotPusher",
   "type": "library",
   "license": "GPL",
   "authors": [
     {
       "name": "Alexandr Mazur",
-      "email": "alexandrmazur96@gmail.com"
+      "email": "alexandrmazur96@gmail.com",
+      "role": "Developer"
     }
   ],
   "require": {
@@ -19,8 +22,8 @@
   },
   "autoload": {
     "psr-4": {
-      "AlexandrMazur\\": "src/",
-      "AlexandrMazur\\Tests\\": "tests/"
+      "Telme\\": "src/",
+      "Telme\\Tests\\": "tests/"
     }
   }
 }

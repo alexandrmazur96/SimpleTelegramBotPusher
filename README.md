@@ -1,7 +1,7 @@
-SimpleTelegramBotPusher
+Telegram me.
 ---
 
-SimpleTelegramBotPusher - lightweight simple pusher to telegram bot.
+Telme is lightweight simple pusher to telegram bot.
 
 ## Installation
 
