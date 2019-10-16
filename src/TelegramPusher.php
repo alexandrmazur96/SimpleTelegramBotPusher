@@ -17,22 +17,11 @@ class TelegramPusher
     private $apiKey;
 
     /**
-     * Telegram channel name.
-     * Since to start with '@' symbol as prefix.
-     * @var string
-     */
-    private $channel;
-
-    /**
      * @param string $apiKey Telegram bot access token provided by BotFather
-     * @param string $channel Telegram channel name
      */
-    public function __construct(
-        $apiKey,
-        $channel
-    ) {
+    public function __construct($apiKey)
+    {
         $this->apiKey = $apiKey;
-        $this->channel = $channel;
     }
 
     /**
@@ -41,7 +30,7 @@ class TelegramPusher
      * @return array
      * @throws Exceptions\CurlException
      */
-    public function send($action, array $requestParameters)
+    public function request($action, array $requestParameters)
     {
         $ch = curl_init();
         $url = self::BOT_API . $this->apiKey . '/' . $action;
@@ -49,6 +38,9 @@ class TelegramPusher
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($requestParameters));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Content-Type: application/x-www-form-urlencoded',
+        ]);
 
         $curlResponse = Curl::execute($ch);
 
