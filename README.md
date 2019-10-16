@@ -3,11 +3,11 @@ SimpleTelegramBotPusher
 
 SimpleTelegramBotPusher - lightweight simple pusher to telegram bot.
 
-##Installation
+## Installation
 
 To be continued...
 
-##Usage
+## Usage
 
 ```$php
 <?php
@@ -59,10 +59,10 @@ echo $response['result']['text'], PHP_EOL;
 
 List of available action and parameters you can find [here](https://core.telegram.org/bots/api#available-methods).
 
-##Author
+### Author
 
 Mazur Alexandr - alexandrmazur96@gmail.com - https://t.me/alexandrmazur96
 
-##License
+### License
 
 SimpleTelegramBotPusher is licensed under the GNU General Public License - see the LICENSE file for details.
