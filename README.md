@@ -12,7 +12,7 @@ Telme is lightweight simple pusher to telegram bot.
 ```$php
 <?php
 
-use AlexandrMazur\TelegramPusher;
+use Telme\TelegramPusher;
 
 $telegramApiKey = 'telegram_api_key';
 
@@ -24,7 +24,7 @@ try {
         'text' => '*Example* text',
         'parse_mode' => 'Markdown',
     ]);
-} catch (AlexandrMazur\Exceptions\CurlException | AlexandrMazur\Exceptions\TelegramBotApiException $e) {
+} catch (Telme\Exceptions\CurlException | Telme\Exceptions\TelegramBotApiException $e) {
     echo $e->getMessage(), PHP_EOL;
 }
 
@@ -65,4 +65,4 @@ Mazur Alexandr - alexandrmazur96@gmail.com - https://t.me/alexandrmazur96
 
 ### License
 
-SimpleTelegramBotPusher is licensed under the GNU General Public License - see the LICENSE file for details.
+Telme is licensed under the GNU General Public License - see the LICENSE file for details.
