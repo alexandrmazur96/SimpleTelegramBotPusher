@@ -4,7 +4,7 @@
   "keywords": ["telegram", "telegram bot", "telegram pusher"],
   "homepage": "https://github.com/alexandrmazur96/SimpleTelegramBotPusher",
   "type": "library",
-  "license": "GPL",
+  "license": "AGPL-3.0-only",
   "authors": [
     {
       "name": "Alexandr Mazur",
